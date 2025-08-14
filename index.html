@@ -1,0 +1,909 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太和清音 - 传统音乐的现代化传承</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#9E2A2B',
+                        secondary: '#E6B89C',
+                        accent: '#FFD700',
+                        dark: '#2D2A32',
+                        light: '#F9F4EF'
+                    },
+                    fontFamily: {
+                        serif: ['Noto Serif SC', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .transition-transform {
+                transition-property: transform;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transition-duration: 300ms;
+            }
+          .hover-scale {
+  transition: all 300ms;
+}
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+            .card-shadow {
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            }
+        }
+    </style>
+</head>
+    <body class="bg-light font-sans text-dark">
+        <!-- 导航栏 -->
+        <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-transparent">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <a href="#" class="flex items-center space-x-2">
+                    <span class="text-primary text-3xl"><i class="fa fa-music"></i></span>
+                    <a href="1.html" class="text-2xl font-serif font-bold text-white text-shadow transform -translate-x-80">太和清音</a>
+
+                </a>
+                
+                <!-- 桌面导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-white hover:text-accent transition-colors duration-300 font-medium">首页</a>
+                    <a href="#music" class="text-white hover:text-accent transition-colors duration-300 font-medium">音乐库</a>
+                    <a href="#news" class="text-white hover:text-accent transition-colors duration-300 font-medium">资讯</a>
+                    <a href="#upload" class="text-white hover:text-accent transition-colors duration-300 font-medium">上传音乐</a>
+                    <a href="#about" class="text-white hover:text-accent transition-colors duration-300 font-medium">关于我们</a>
+                    <a href="登录注册页面.html" class="text-white hover:text-accent transition-colors duration-300 font-medium">登录/注册</a>
+        
+                </nav>
+                
+                <!-- 移动端菜单按钮 -->
+                <button id="menuBtn" class="md:hidden text-white text-2xl focus:outline-none">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="md:hidden bg-dark bg-opacity-95 hidden">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="#home" class="text-white hover:text-accent transition-colors duration-300 py-2 border-b border-gray-700">首页</a>
+                <a href="#music" class="text-white hover:text-accent transition-colors duration-300 py-2 border-b border-gray-700">音乐库</a>
+                <a href="#news" class="text-white hover:text-accent transition-colors duration-300 py-2 border-b border-gray-700">资讯</a>
+                <a href="#upload" class="text-white hover:text-accent transition-colors duration-300 py-2 border-b border-gray-700">上传音乐</a>
+                <a href="#about" class="text-white hover:text-accent transition-colors duration-300 py-2">关于我们</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主区域 -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+           <img src="C:\Users\L\Desktop\taihe-qingyin-music-website\太和清音\完整\图片\主页面01.png" alt="传统音乐表演场景" class="w-full h-full object-cover">
+
+            <div class="absolute inset-0 bg-dark bg-opacity-60"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h1 class="text-[clamp(2.5rem,6vw,4.5rem)] font-serif font-bold text-white mb-6 leading-tight text-shadow animate-fade-in">
+                太和清音<br>传统音乐的现代化传承
+            </h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] text-white mb-10 max-w-3xl mx-auto text-shadow">
+                探索非物质文化遗产的魅力，聆听历史的声音，参与传统音乐的保护与创新
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#music" class="bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 hover-scale">
+                    聆听音乐 <i class="fa fa-headphones ml-2"></i>
+                </a>
+                <a href="#upload" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary font-medium py-3 px-8 rounded-full transition-all duration-300 hover-scale">
+                    上传作品 <i class="fa fa-upload ml-2"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <a href="#featured" class="text-3xl">
+                <i class="fa fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 精选音乐 -->
+    <section id="featured" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-serif font-bold text-dark mb-4">精选太和清音</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">探索最具代表性的太和清音作品，感受传统音乐的独特魅力</p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-6"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 音乐卡片1 -->
+                <div class="bg-light rounded-xl overflow-hidden card-shadow hover-scale">
+                    <div class="relative h-56">
+                        <img src="https://picsum.photos/id/1073/600/400" alt="《清音雅韵》表演" class="w-full h-full object-cover">
+                        <button class="absolute inset-0 m-auto w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl opacity-90 hover:opacity-100 transition-opacity duration-300 play-btn" data-track="track1">
+                            <i class="fa fa-play"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">《清音雅韵》</h3>
+                        <p class="text-gray-600 mb-4">传统曲目，展现太和清音的典雅韵味</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500"><i class="fa fa-user mr-1"></i> 民间艺术家</span>
+                            <span class="text-sm text-gray-500"><i class="fa fa-calendar mr-1"></i> 2023-05-12</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 音乐卡片2 -->
+                <div class="bg-light rounded-xl overflow-hidden card-shadow hover-scale">
+                    <div class="relative h-56">
+                        <img src="https://picsum.photos/id/1082/600/400" alt="《古韵新声》表演" class="w-full h-full object-cover">
+                        <button class="absolute inset-0 m-auto w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl opacity-90 hover:opacity-100 transition-opacity duration-300 play-btn" data-track="track2">
+                            <i class="fa fa-play"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">《雨花英烈》</h3>
+                        <p class="text-gray-600 mb-4">创新改编，融合现代元素的太和清音</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500"><i class="fa fa-user mr-1"></i> 民间艺术家</span>
+                            <span class="text-sm text-gray-500"><i class="fa fa-calendar mr-1"></i> 2023-07-28</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 音乐卡片3 -->
+                <div class="bg-light rounded-xl overflow-hidden card-shadow hover-scale">
+                    <div class="relative h-56">
+                        <img src="https://picsum.photos/id/177/600/400" alt="《山水情》表演" class="w-full h-full object-cover">
+                        <button class="absolute inset-0 m-auto w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl opacity-90 hover:opacity-100 transition-opacity duration-300 play-btn" data-track="track3">
+                            <i class="fa fa-play"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">《琵琶词》</h3>
+                        <p class="text-gray-600 mb-4">描绘自然风光的经典太和清音曲目</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500"><i class="fa fa-user mr-1"></i> 民间艺术家</span>
+                            <span class="text-sm text-gray-500"><i class="fa fa-calendar mr-1"></i> 2023-03-15</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#music" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors duration-300">
+                    查看全部音乐 <i class="fa fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 音乐播放器 -->
+    <div id="musicPlayer" class="fixed bottom-0 left-0 w-full bg-dark text-white py-3 px-4 shadow-lg transform translate-y-full transition-transform duration-300 z-50">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="flex items-center mb-3 md:mb-0">
+                    <img id="playerImage" src="https://picsum.photos/id/1073/80/80" alt="当前播放曲目封面" class="w-16 h-16 rounded mr-4">
+                    <div>
+                        <h4 id="playerTitle" class="font-medium">《清音雅韵》</h4>
+                        <p id="playerArtist" class="text-sm text-gray-400">李明远</p>
+                    </div>
+                </div>
+                
+                <div class="flex-1 max-w-md w-full mx-4">
+                    <div class="flex items-center justify-center space-x-6 mb-2">
+                        <button class="hover:text-accent transition-colors duration-300"><i class="fa fa-step-backward"></i></button>
+                        <button id="playPauseBtn" class="text-xl hover:text-accent transition-colors duration-300"><i class="fa fa-pause"></i></button>
+                        <button class="hover:text-accent transition-colors duration-300"><i class="fa fa-step-forward"></i></button>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span id="currentTime" class="text-xs">01:23</span>
+                        <div class="flex-1 h-1 bg-gray-700 rounded-full overflow-hidden">
+                            <div class="h-full bg-primary w-1/3"></div>
+                        </div>
+                        <span id="totalTime" class="text-xs">05:45</span>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="hover:text-accent transition-colors duration-300"><i class="fa fa-volume-up"></i></button>
+                    <button id="closePlayer" class="hover:text-accent transition-colors duration-300"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 音乐库 -->
+    <section id="music" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-serif font-bold text-dark mb-4">太和清音音乐库</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">探索完整的太和清音音乐收藏，发现传统与创新的完美融合</p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-6"></div>
+            </div>
+            
+            <!-- 搜索和筛选 -->
+            <div class="mb-10 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="relative w-full md:w-1/3">
+                    <input type="text" placeholder="搜索音乐、艺术家或专辑..." class="w-full py-3 px-5 pl-12 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50">
+                    <i class="fa fa-search absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                </div>
+                
+                <div class="flex flex-wrap gap-3">
+                    <button class="bg-primary text-white py-2 px-5 rounded-full text-sm">全部</button>
+                    <button class="bg-white text-gray-700 py-2 px-5 rounded-full text-sm hover:bg-gray-100 transition-colors duration-300">传统曲目</button>
+                    <button class="bg-white text-gray-700 py-2 px-5 rounded-full text-sm hover:bg-gray-100 transition-colors duration-300">现代改编</button>
+                    <button class="bg-white text-gray-700 py-2 px-5 rounded-full text-sm hover:bg-gray-100 transition-colors duration-300">演奏教学</button>
+                </div>
+            </div>
+            
+            <!-- 音乐列表 -->
+            <div class="space-y-4">
+                <!-- 音乐项1 -->
+                <div class="bg-white rounded-lg p-4 flex flex-col md:flex-row items-center justify-between card-shadow hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <img src="https://picsum.photos/id/1073/60/60" alt="《清音雅韵》封面" class="w-14 h-14 rounded mr-4">
+                        <div>
+                            <h3 class="font-bold">《清音雅韵》</h3>
+                            <p class="text-sm text-gray-600">李明远</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-6 w-full md:w-auto justify-center md:justify-end">
+                        <span class="text-sm text-gray-500">05:45</span>
+                        <span class="text-sm text-gray-500"><i class="fa fa-play-circle mr-1"></i> 1,243</span>
+                        <button class="text-primary hover:text-primary/80 transition-colors duration-300 play-btn" data-track="track1">
+                            <i class="fa fa-play text-xl"></i>
+                        </button>
+                        <button class="text-gray-500 hover:text-gray-700 transition-colors duration-300">
+                            <i class="fa fa-heart-o text-xl"></i>
+                        </button>
+                        <button class="text-gray-500 hover:text-gray-700 transition-colors duration-300">
+                            <i class="fa fa-download text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 音乐项2 -->
+                <div class="bg-white rounded-lg p-4 flex flex-col md:flex-row items-center justify-between card-shadow hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <img src="https://picsum.photos/id/1082/60/60" alt="《古韵新声》封面" class="w-14 h-14 rounded mr-4">
+                        <div>
+                            <h3 class="font-bold">《古韵新声》</h3>
+                            <p class="text-sm text-gray-600">张华清</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-6 w-full md:w-auto justify-center md:justify-end">
+                        <span class="text-sm text-gray-500">04:32</span>
+                        <span class="text-sm text-gray-500"><i class="fa fa-play-circle mr-1"></i> 987</span>
+                        <button class="text-primary hover:text-primary/80 transition-colors duration-300 play-btn" data-track="track2">
+                            <i class="fa fa-play text-xl"></i>
+                        </button>
+                        <button class="text-gray-500 hover:text-gray-700 transition-colors duration-300">
+                            <i class="fa fa-heart-o text-xl"></i>
+                        </button>
+                        <button class="text-gray-500 hover:text-gray-700 transition-colors duration-300">
+                            <i class="fa fa-download text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 音乐项3 -->
+                <div class="bg-white rounded-lg p-4 flex flex-col md:flex-row items-center justify-between card-shadow hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <img src="https://picsum.photos/id/177/60/60" alt="《山水情》封面" class="w-14 h-14 rounded mr-4">
+                        <div>
+                            <h3 class="font-bold">《山水情》</h3>
+                            <p class="text-sm text-gray-600">王静怡</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-6 w-full md:w-auto justify-center md:justify-end">
+                        <span class="text-sm text-gray-500">06:18</span>
+                        <span class="text-sm text-gray-500"><i class="fa fa-play-circle mr-1"></i> 1,562</span>
+                        <button class="text-primary hover:text-primary/80 transition-colors duration-300 play-btn" data-track="track3">
+                            <i class="fa fa-play text-xl"></i>
+                        </button>
+                        <button class="text-gray-500 hover:text-gray-700 transition-colors duration-300">
+                            <i class="fa fa-heart-o text-xl"></i>
+                        </button>
+                        <button class="text-gray-500 hover:text-gray-700 transition-colors duration-300">
+                            <i class="fa fa-download text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 音乐项4 -->
+                <div class="bg-white rounded-lg p-4 flex flex-col md:flex-row items-center justify-between card-shadow hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <img src="https://picsum.photos/id/225/60/60" alt="《月下独酌》封面" class="w-14 h-14 rounded mr-4">
+                        <div>
+                            <h3 class="font-bold">《月下独酌》</h3>
+                            <p class="text-sm text-gray-600">刘子谦</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-6 w-full md:w-auto justify-center md:justify-end">
+                        <span class="text-sm text-gray-500">05:27</span>
+                        <span class="text-sm text-gray-500"><i class="fa fa-play-circle mr-1"></i> 845</span>
+                        <button class="text-primary hover:text-primary/80 transition-colors duration-300 play-btn" data-track="track4">
+                            <i class="fa fa-play text-xl"></i>
+                        </button>
+                        <button class="text-gray-500 hover:text-gray-700 transition-colors duration-300">
+                            <i class="fa fa-heart-o text-xl"></i>
+                        </button>
+                        <button class="text-gray-500 hover:text-gray-700 transition-colors duration-300">
+                            <i class="fa fa-download text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 音乐项5 -->
+                <div class="bg-white rounded-lg p-4 flex flex-col md:flex-row items-center justify-between card-shadow hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <img src="https://picsum.photos/id/328/60/60" alt="《清风徐来》封面" class="w-14 h-14 rounded mr-4">
+                        <div>
+                            <h3 class="font-bold">《清风徐来》</h3>
+                            <p class="text-sm text-gray-600">陈明月</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-6 w-full md:w-auto justify-center md:justify-end">
+                        <span class="text-sm text-gray-500">04:59</span>
+                        <span class="text-sm text-gray-500"><i class="fa fa-play-circle mr-1"></i> 732</span>
+                        <button class="text-primary hover:text-primary/80 transition-colors duration-300 play-btn" data-track="track5">
+                            <i class="fa fa-play text-xl"></i>
+                        </button>
+                        <button class="text-gray-500 hover:text-gray-700 transition-colors duration-300">
+                            <i class="fa fa-heart-o text-xl"></i>
+                        </button>
+                        <button class="text-gray-500 hover:text-gray-700 transition-colors duration-300">
+                            <i class="fa fa-download text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 分页 -->
+            <div class="mt-10 flex justify-center">
+                <nav class="flex items-center space-x-2">
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition-colors duration-300">
+                        <i class="fa fa-chevron-left"></i>
+                    </button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white">1</button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition-colors duration-300">2</button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition-colors duration-300">3</button>
+                    <span class="text-gray-500">...</span>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition-colors duration-300">8</button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition-colors duration-300">
+                        <i class="fa fa-chevron-right"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- 资讯区 -->
+    <section id="news" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-serif font-bold text-dark mb-4">太和清音资讯</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">了解最新的太和清音保护、传承与创新动态</p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-6"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 资讯卡片1 -->
+                <article class="bg-light rounded-xl overflow-hidden card-shadow hover-scale">
+                    <div class="relative h-48">
+                        <img src="C:\Users\L\Desktop\taihe-qingyin-music-website\太和清音\完整\图片\资讯02.jpg" alt="太和清音传承讲演活动" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-primary text-white text-xs py-1 px-3 rounded-full">
+                            活动报道
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <span><i class="fa fa-calendar mr-1"></i> 2023-05-18</span>
+                            <span class="mx-2">•</span>
+                            <span><i class="fa fa-eye mr-1"></i> 328</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">“太和清音”传承讲演活动在安徽艺术学院举行</h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3">5月17日下午，省级非遗“太和清音”传承讲演活动在安徽艺术学院顺利举办。活动由安徽艺术学院音乐...</p>
+                        <a href="http://ah.anhuinews.com/kjyww/202305/t20230518_6865976.html" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors duration-300">
+                            阅读全文 <i class="fa fa-angle-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 资讯卡片2 -->
+                <article class="bg-light rounded-xl overflow-hidden card-shadow hover-scale">
+                    <div class="relative h-48">
+                        <img src="C:\Users\L\Desktop\taihe-qingyin-music-website\太和清音\完整\图片\资讯01.jpeg" alt="太和清音进校园活动" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-primary text-white text-xs py-1 px-3 rounded-full">
+                            教育传承
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <span><i class="fa fa-calendar mr-1"></i> 2021-11-25</span>
+                            <span class="mx-2">•</span>
+                            <span><i class="fa fa-eye mr-1"></i> 256</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">非物质文化遗产丨太和清音，一曲悠悠七百年</h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3">如果你不知道太和清音，就等于不知道太和。”这是一位名作家的话，也是太和人喜欢挂在嘴边的口头语清音，一种古老的艺术形式如今，饱经沧桑七百年，依旧保持着少女般的腔调温婉地唱着时代的变迁...</p>
+                        <a href="https://www.sohu.com/a/503490531_121119269" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors duration-300">
+                            阅读全文 <i class="fa fa-angle-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 资讯卡片3 -->
+                <article class="bg-light rounded-xl overflow-hidden card-shadow hover-scale">
+                    <div class="relative h-48">
+                        <img src="C:\Users\L\Desktop\taihe-qingyin-music-website\太和清音\完整\图片\资讯03.webp" alt="安师大相关报道01" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-primary text-white text-xs py-1 px-3 rounded-full">
+                            暑实新闻
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <span><i class="fa fa-calendar mr-1"></i> 2025-07-7</span>
+                            <span class="mx-2">•</span>
+                            <span><i class="fa fa-eye mr-1"></i> 250</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">传承非遗薪火｜安师大学子携手清音老艺人共续非遗之华章</h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3">踏入太和清音传习所，首先映入眼帘的是墙上一幅幅珍贵的剧照和老艺术家们的简介。这些历史的印记，诉说着太和清音的辉煌过往，让调研团队的成员们仿佛穿越时空，看到了清音艺术在岁月长河中熠熠生辉...</p>
+                        <a href="https://mp.weixin.qq.com/s/s6kBDoByVb2YacsR2XXilg" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors duration-300">
+                            阅读全文 <i class="fa fa-angle-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="更多资讯.html" class="inline-block bg-white border border-primary text-primary hover:bg-primary hover:text-white font-medium py-3 px-8 rounded-full transition-all duration-300 hover-scale">
+                    查看更多资讯
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数据统计 -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="128">0</div>
+                    <p class="text-white/80">收录曲目</p>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="36">0</div>
+                    <p class="text-white/80">传承艺人</p>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="15">0</div>
+                    <p class="text-white/80">保护基地</p>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="25000">0</div>
+                    <p class="text-white/80">听众人次</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 上传音乐 -->
+    <section id="upload" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-serif font-bold text-dark mb-4">上传太和清音作品</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">分享您的太和清音创作或演绎，为传统音乐的传承贡献力量</p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-6"></div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto bg-white rounded-2xl p-8 card-shadow">
+                <form id="uploadForm" class="space-y-6">
+                    <div>
+                        <label for="title" class="block text-gray-700 font-medium mb-2">作品标题</label>
+                        <input type="text" id="title" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="请输入作品标题">
+                    </div>
+                    
+                    <div>
+                        <label for="artist" class="block text-gray-700 font-medium mb-2">表演者/创作者</label>
+                        <input type="text" id="artist" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="请输入表演者或创作者姓名">
+                    </div>
+                    
+                    <div>
+                        <label for="category" class="block text-gray-700 font-medium mb-2">作品类别</label>
+                        <select id="category" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50">
+                            <option value="">请选择类别</option>
+                            <option value="traditional">传统曲目</option>
+                            <option value="adaptation">现代改编</option>
+                            <option value="teaching">教学演示</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="description" class="block text-gray-700 font-medium mb-2">作品描述</label>
+                        <textarea id="description" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="请简要描述作品背景、特点等信息"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">上传音频文件</label>
+                        <div id="dropArea" class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary transition-colors duration-300">
+                            <i class="fa fa-cloud-upload text-4xl text-gray-400 mb-4"></i>
+                            <p class="text-gray-600 mb-2">拖放音频文件到此处，或</p>
+                            <button type="button" class="bg-primary text-white py-2 px-6 rounded-full text-sm hover:bg-primary/90 transition-colors duration-300">
+                                选择文件
+                            </button>
+                            <p class="text-xs text-gray-500 mt-4">支持格式：MP3, WAV, FLAC (最大50MB)</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="cover" class="block text-gray-700 font-medium mb-2">作品封面（可选）</label>
+                        <input type="file" id="cover" accept="image/*" class="w-full text-gray-600">
+                        <p class="text-xs text-gray-500 mt-2">支持JPG, PNG格式，建议尺寸：600×600像素</p>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <input type="checkbox" id="agreement" class="mt-1">
+                        <label for="agreement" class="ml-2 text-sm text-gray-600">
+                            我确认此作品为本人原创或已获得授权，同意网站根据<a href="#" class="text-primary hover:underline">《用户协议》</a>进行展示和传播
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 hover-scale">
+                        提交作品
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-serif font-bold text-dark mb-6">关于太和清音</h2>
+                    <div class="w-20 h-1 bg-primary mb-8"></div>
+                    
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        太和清音是我国珍贵的非物质文化遗产，是一种历史悠久的传统音乐形式，起源于明清时期，具有独特的艺术风格和文化内涵。
+                    </p>
+                    
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        我们致力于太和清音的现代化保护与传承工作，通过数字化技术记录和保存这一珍贵的文化遗产，同时积极探索传统音乐与现代艺术形式的融合，让更多人了解和喜爱太和清音。
+                    </p>
+                    
+                    <p class="text-gray-700 mb-8 leading-relaxed">
+                        本网站作为太和清音保护与传承的重要平台，汇集了丰富的音乐资源、最新的传承资讯，为爱好者提供交流与展示的空间，共同推动这一传统艺术的活态传承。
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://baike.baidu.com/item/%E5%A4%AA%E5%92%8C%E6%B8%85%E9%9F%B3/7165855#:~:text=%E5%A4%AA%E5%92%8C%E6%B8%85%E9%9F%B3%E6%B8%85%E9%9F%B3%E5%94%B1%E8%85%94%E4%BC%98%E7%BE%8E%EF%BC%8C%E6%9B%B2%E8%B0%83%E6%B8%85%E4%B8%BD%EF%BC%8C%E5%90%AC%E6%9D%A5%E5%A9%89%E8%BD%AC%E6%9F%94%E5%92%8C%EF%BC%8C%E4%BB%A4%E4%BA%BA%E6%B8%85%E5%BF%83%E8%88%92%E6%80%80%EF%BC%8C%E6%B5%81%E8%A1%8C%E4%BA%8E%E4%BA%B3%E5%B7%9E%E3%80%81%E5%A4%AA%E5%92%8C%E5%9C%B0%E5%8C%BA%E3%80%82%20%E4%BB%A3%E8%A1%A8%E4%B9%A6%E7%9B%AE%E6%9C%89%E3%80%8A%E8%BF%BD%E8%88%9F%E3%80%8B%E3%80%8A%E7%A7%8B%E6%B1%9F%E3%80%8B%E7%AD%89%E3%80%82%20%5B2%5D%202009%E5%B9%B4%EF%BC%8C%E5%A4%AA%E5%92%8C%E6%B8%85%E9%9F%B3%E5%85%A5%E9%80%89%E5%AE%89%E5%BE%BD%E7%9C%81%E7%AC%AC%E4%B8%80%E6%89%B9%E7%9C%81%E7%BA%A7%E9%9D%9E%E7%89%A9%E8%B4%A8%E6%96%87%E5%8C%96%E9%81%97%E4%BA%A7%E5%90%8D%E5%BD%95%E3%80%82,%5B1%5D%20%E6%8D%AE%E3%80%8A%E6%B8%85%E9%9F%B3%E7%AD%9D%E8%B0%B1%E3%80%8B%E8%AE%B0%E8%BD%BD%EF%BC%9A%E5%85%83%E6%9C%AB%E6%98%8E%E5%88%9D%EF%BC%8C%E9%A2%8D%E5%B7%9E%E6%B3%89%E6%B2%B3%E5%8D%97%E5%B2%B8%E6%9C%89%E4%B8%80%E7%8E%84%E5%9D%9B%E6%B3%95%E5%B8%88%EF%BC%8C%E5%AD%A6%E8%AF%86%E6%B8%8A%E5%8D%9A%EF%BC%8C%E4%B8%94%E7%B2%BE%E9%80%9A%E9%9F%B3%E5%BE%8B%E3%80%82%20%E4%BB%96%E6%80%A7%E5%96%9C%E5%BC%A6%E6%AD%8C%EF%BC%8C%E5%B0%A4%E4%BB%A5%E7%90%B4%E7%AD%9D%E4%B8%BA%E9%95%BF%EF%BC%8C%E7%BB%88%E6%97%A5%E7%A0%94%E4%B9%A0%EF%BC%8C%E5%AF%92%E6%9A%91%E4%B8%8D%E8%BE%8D%EF%BC%8C%E5%90%9F%E5%94%B1%E5%87%BA%E4%B8%80%E7%A7%8D%E6%97%8B%E5%BE%8B%E4%BD%9C%E4%B8%BA%E6%9B%B2%E6%AD%8C%EF%BC%8C%E6%97%A5%E4%B8%8E%E4%BC%97%E5%BE%92%E5%BC%B9%E5%94%B1%E8%87%AA%E5%A8%B1%E3%80%82%20%E5%9B%A0%E5%85%B6%E6%9B%B2%E8%B0%83%E6%B8%85%E9%9B%85%E6%82%A0%E6%89%AC%EF%BC%8C%E6%95%85%E5%90%8D%E2%80%9C%E6%B8%85%E9%9F%B3%E2%80%9D%E3%80%82%20%5B1%5D" class="inline-flex items-center bg-primary hover:bg-primary/90 text-white font-medium py-2 px-6 rounded-full transition-all duration-300 hover-scale">
+                            了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="inline-flex items-center bg-transparent border border-primary text-primary hover:bg-primary hover:text-white font-medium py-2 px-6 rounded-full transition-all duration-300 hover-scale">
+                            加入我们 <i class="fa fa-users ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <img src="https://picsum.photos/id/1059/600/800" alt="太和清音表演" class="rounded-lg w-full h-64 object-cover card-shadow hover-scale">
+                        <img src="https://picsum.photos/id/1074/600/400" alt="传统乐器展示" class="rounded-lg w-full h-40 object-cover card-shadow hover-scale">
+                    </div>
+                    <div class="space-y-4 mt-8">
+                        <img src="https://picsum.photos/id/174/600/400" alt="传承人教学" class="rounded-lg w-full h-40 object-cover card-shadow hover-scale">
+                        <img src="https://picsum.photos/id/331/600/800" alt="太和清音音乐会" class="rounded-lg w-full h-64 object-cover card-shadow hover-scale">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 订阅区域 -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-serif font-bold mb-4">订阅太和清音资讯</h2>
+                <p class="text-gray-300 mb-8">及时获取最新的太和清音活动、传承动态和音乐更新</p>
+                
+                <form class="flex flex-col sm:flex-row gap-3">
+                    <input type="email" placeholder="请输入您的邮箱地址" class="flex-1 px-4 py-3 rounded-lg focus:outline-none text-gray-800">
+                    <button type="submit" class="bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 hover-scale whitespace-nowrap">
+                        立即订阅
+                    </button>
+                </form>
+                
+                <p class="text-gray-400 text-sm mt-4">我们尊重您的隐私，不会向第三方分享您的信息</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <span class="text-primary text-3xl"><i class="fa fa-music"></i></span>
+                        <h3 class="text-2xl font-serif font-bold">太和清音</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        致力于太和清音这一非物质文化遗产的现代化保护与传承，让传统音乐焕发新的生命力。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300 text-xl">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300 text-xl">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300 text-xl">
+                            <i class="fa fa-youtube-play"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300 text-xl">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">快速链接</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors duration-300">首页</a></li>
+                        <li><a href="#music" class="text-gray-400 hover:text-white transition-colors duration-300">音乐库</a></li>
+                        <li><a href="#news" class="text-gray-400 hover:text-white transition-colors duration-300">资讯动态</a></li>
+                        <li><a href="#upload" class="text-gray-400 hover:text-white transition-colors duration-300">上传作品</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors duration-300">关于我们</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">相关资源</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">传承人名录</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">乐谱库</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">教学资料</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">学术研究</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">活动日历</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">联系我们</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">安徽师范大学太和清音团队</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone text-primary mr-3"></i>
+                            <span class="text-gray-400">010-12345678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope text-primary mr-3"></i>
+                            <span class="text-gray-400">contact@taiheqingyin.org</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                <p>© 2025 安徽师范大学太和清音团队 版权所有 | 皖ICP备12345678号</p>
+            </div>
+        </div>
+    </footer>
+
+      <!-- 音频播放器 -->
+    <audio id="audioPlayer" hidden>
+        <source src="" type="audio/mpeg">
+        您的浏览器不支持音频播放
+    </audio>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-dark', 'bg-opacity-95', 'shadow-lg');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.add('bg-transparent');
+                navbar.classList.remove('bg-dark', 'bg-opacity-95', 'shadow-lg');
+            }
+        });
+        
+        // 移动端菜单
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单
+                    document.getElementById('mobileMenu').classList.add('hidden');
+                }
+            });
+        });
+        
+        // 音乐播放功能
+        const musicPlayer = document.getElementById('musicPlayer');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const closePlayer = document.getElementById('closePlayer');
+        const playerTitle = document.getElementById('playerTitle');
+        const playerArtist = document.getElementById('playerArtist');
+        const playerImage = document.getElementById('playerImage');
+        
+        // 曲目信息
+        const tracks = {
+            track1: {
+                title: "《清音雅韵》",
+                artist: "李明远",
+                image: "https://picsum.photos/id/1073/80/80",
+                duration: "05:45",
+                url: "C:\\Users\\L\\Desktop\\taihe-qingyin-music-website\\太和清音\\完整\\音频\\2492671809.mp3"
+            },
+            track2: {
+                title: "《古韵新声》",
+                artist: "张华清",
+                image: "https://picsum.photos/id/1082/80/80",
+                duration: "04:32",
+                url: "C:\\Users\\L\\Desktop\\taihe-qingyin-music-website\\太和清音\\完整\\音频\\2492671809.mp3"
+            },
+            track3: {
+                title: "《山水情》",
+                artist: "王静怡",
+                image: "https://picsum.photos/id/177/80/80",
+                duration: "06:18"
+            },
+            track4: {
+                title: "《月下独酌》",
+                artist: "刘子谦",
+                image: "https://picsum.photos/id/225/80/80",
+                duration: "05:27"
+            },
+            track5: {
+                title: "《清风徐来》",
+                artist: "陈明月",
+                image: "https://picsum.photos/id/328/80/80",
+                duration: "04:59"
+            }
+        };
+        
+        // 播放按钮点击事件
+        document.querySelectorAll('.play-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const trackId = this.getAttribute('data-track');
+                const track = tracks[trackId] || tracks.track1;
+                const audioPlayer = document.getElementById('audioPlayer');
+
+                // 更新播放器信息
+                playerTitle.textContent = track.title;
+                playerArtist.textContent = track.artist;
+                playerImage.src = track.image;
+                playerImage.alt = track.title;
+                document.getElementById('totalTime').textContent = track.duration;
+
+                // 设置音频源并播放
+                audioPlayer.src = track.url;
+                audioPlayer.play().then(() => {
+                    // 显示播放器
+                    musicPlayer.classList.remove('translate-y-full');
+
+                    // 更改按钮图标
+                    playPauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
+                    document.querySelectorAll('.play-btn i').forEach(icon => icon.className = 'fa fa-play');
+                    this.querySelector('i').className = 'fa fa-pause';
+                }).catch(error => {
+                    console.error('播放失败:', error);
+                    alert('无法播放音频，请检查文件是否存在');
+                });
+            });
+        });
+
+        // 暂停/播放切换
+        playPauseBtn.addEventListener('click', function() {
+            const icon = this.querySelector('i');
+            const audioPlayer = document.getElementById('audioPlayer');
+
+            if (icon.classList.contains('fa-pause')) {
+                audioPlayer.pause();
+                icon.className = 'fa fa-play';
+                document.querySelector('.play-btn i.fa-pause').className = 'fa fa-play';
+            } else {
+                audioPlayer.play();
+                icon.className = 'fa fa-pause';
+                document.querySelector('.play-btn i.fa-play').className = 'fa fa-pause';
+            }
+        });
+        
+        // 关闭播放器
+        closePlayer.addEventListener('click', function() {
+            musicPlayer.classList.add('translate-y-full');
+            // 重置所有播放按钮
+            document.querySelectorAll('.play-btn i').forEach(icon => {
+                icon.className = 'fa fa-play';
+            });
+            playPauseBtn.innerHTML = '<i class="fa fa-play"></i>';
+        });
+        
+        // 数字计数动画
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(() => observer.observe(counter), 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+        
+        // 表单提交
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('作品上传功能即将上线，敬请期待！');
+        });
+    </script>
+</body>
+</html>
